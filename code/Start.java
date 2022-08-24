@@ -5,9 +5,9 @@ class Start {
     public static void main(String[] data) {
         City[] all = {
                 new City("Pattaya",       5000),
-                new City("Banglamung",    3000),
-                new City("Lamchabang",    4000),
-                new City("Sriracha",      3500),
+                new City("Banglamung",    2000),
+                new City("Lamchabang",    3000),
+                new City("Sriracha",      4000),
         };
         
         // Write code to sort by population
@@ -23,10 +23,7 @@ class CityComparator implements Comparator {
     public int compare(Object x, Object y) {
         City p = (City)x;
         City q = (City)y;
-        
-        if (p.population() < q.population()) return -1;
-        if (p.population() > q.population()) return +1;
-        return 0;
+        return p.population() - q.population();
     }
 }
 
