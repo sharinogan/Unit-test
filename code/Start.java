@@ -1,7 +1,9 @@
 class Start {
     public static void main(String[] data) {
-        Student st = new Student("Harry P", 92.7);
-        System.out.println(st);
+        Book b = new Book();
+        b.price = 150;
+        double t = b.getSpecialPrice();
+        System.out.println(t);
     }
 }
 
@@ -15,6 +17,29 @@ class Product {
 class Book extends Product { }
 //     '              '-------------> super type or super class
 //     '----------------------------> sub type or sub class
+
+// Write method to discount 20% for member
+class Shirt extends Product {
+    Member m = new Member();
+    
+    double getSpecialPrize() {
+        return price * 0.80;
+    }
+}
+
+class Member extends Product {
+    String name;
+    boolean customer_status;  // true => membership  false => not membership
+    
+    static boolean isMember(Member m) {
+        if (m.name != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
+
 
 enum Gender { MALE, FEMALE }
 enum ProductType { Phone, Tablet, Laptop }
