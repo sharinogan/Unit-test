@@ -1,9 +1,18 @@
 class Start {
     public static void main(String[] data) {
-        Shirt s = new Shirt();
-        s.price = 200;
-        double t = s.getSpecialPrice();
-        System.out.println(t);
+        Printer p = new Printer();
+        p.start();
+        for (int i = 0; i < 1000; i++) {
+            System.out.print("A");
+        }
+    }
+}
+
+class Printer extends Thread {
+    @Override public void run() {
+        for (int i = 0; i < 1000; i++) {
+            System.out.print("P");
+        }
     }
 }
 
@@ -22,7 +31,8 @@ class Book extends Product { }
 class Shirt extends Product {
     Member m = new Member();
     
-    double getSpecialPrize() {      // This method is override
+    @Override
+    double getSpecialPrice() {      // This method is override
         return price * 0.80;
     }
 }
