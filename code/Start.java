@@ -1,17 +1,38 @@
+import java.util.Arrays;
+import java.util.Comparator;
+
 class Start {
     public static void main(String[] data) {
-        Printer p = new Printer();
-        p.start();
+        City[] all = {
+                new City("Pattaya",       5000),
+                new City("Banglamung",    3000),
+                new City("Lamchabang",    4000),
+                new City("Sriracha",      3500),
+        };
         
-        Worker w = new Worker();
-        Thread t = new Thread(w);
-        t.start();
-        
-        for (int i = 0; i < 1000; i++) {
-            System.out.print("A");
+        // Write code to sort by population
+        Arrays.sort(all, new CityComparator());
+        for (int i = 0; i < all.length; i++) {
+            System.out.println(all[i].population());
         }
     }
 }
+
+class CityComparator implements Comparator {
+    @Override
+    public int compare(Object x, Object y) {
+        City p = (City)x;
+        City q = (City)y;
+        
+        if (p.population() < q.population()) return -1;
+        if (p.population() > q.population()) return +1;
+        return 0;
+    }
+}
+
+record City(String name, int population) {  }
+
+interface Taxable { }
 
 class Printer extends Thread {
     @Override public void run() {
