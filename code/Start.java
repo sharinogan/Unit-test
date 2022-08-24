@@ -1,8 +1,8 @@
 class Start {
     public static void main(String[] data) {
-        Book b = new Book();
-        b.price = 150;
-        double t = b.getSpecialPrice();
+        Shirt s = new Shirt();
+        s.price = 200;
+        double t = s.getSpecialPrice();
         System.out.println(t);
     }
 }
@@ -22,7 +22,7 @@ class Book extends Product { }
 class Shirt extends Product {
     Member m = new Member();
     
-    double getSpecialPrize() {
+    double getSpecialPrize() {      // This method is override
         return price * 0.80;
     }
 }
